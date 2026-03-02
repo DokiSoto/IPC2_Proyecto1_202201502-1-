@@ -1,0 +1,14 @@
+C:\Users\dxssm\source\repos\IPC2PROYECTO1\IPC2PROYECTO1\bin\Debug\net10.0\IPC2PROYECTO1.exe
+C:\Users\dxssm\source\repos\IPC2PROYECTO1\IPC2PROYECTO1\bin\Debug\net10.0\IPC2PROYECTO1.deps.json
+C:\Users\dxssm\source\repos\IPC2PROYECTO1\IPC2PROYECTO1\bin\Debug\net10.0\IPC2PROYECTO1.runtimeconfig.json
+C:\Users\dxssm\source\repos\IPC2PROYECTO1\IPC2PROYECTO1\bin\Debug\net10.0\IPC2PROYECTO1.dll
+C:\Users\dxssm\source\repos\IPC2PROYECTO1\IPC2PROYECTO1\bin\Debug\net10.0\IPC2PROYECTO1.pdb
+C:\Users\dxssm\source\repos\IPC2PROYECTO1\IPC2PROYECTO1\obj\Debug\net10.0\IPC2PROYECTO1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dxssm\source\repos\IPC2PROYECTO1\IPC2PROYECTO1\obj\Debug\net10.0\IPC2PROYECTO1.AssemblyInfoInputs.cache
+C:\Users\dxssm\source\repos\IPC2PROYECTO1\IPC2PROYECTO1\obj\Debug\net10.0\IPC2PROYECTO1.AssemblyInfo.cs
+C:\Users\dxssm\source\repos\IPC2PROYECTO1\IPC2PROYECTO1\obj\Debug\net10.0\IPC2PROYECTO1.csproj.CoreCompileInputs.cache
+C:\Users\dxssm\source\repos\IPC2PROYECTO1\IPC2PROYECTO1\obj\Debug\net10.0\IPC2PROYECTO1.dll
+C:\Users\dxssm\source\repos\IPC2PROYECTO1\IPC2PROYECTO1\obj\Debug\net10.0\refint\IPC2PROYECTO1.dll
+C:\Users\dxssm\source\repos\IPC2PROYECTO1\IPC2PROYECTO1\obj\Debug\net10.0\IPC2PROYECTO1.pdb
+C:\Users\dxssm\source\repos\IPC2PROYECTO1\IPC2PROYECTO1\obj\Debug\net10.0\IPC2PROYECTO1.genruntimeconfig.cache
+C:\Users\dxssm\source\repos\IPC2PROYECTO1\IPC2PROYECTO1\obj\Debug\net10.0\ref\IPC2PROYECTO1.dll
