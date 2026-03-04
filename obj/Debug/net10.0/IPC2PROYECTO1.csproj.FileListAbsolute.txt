@@ -12,3 +12,4 @@ C:\Users\dxssm\source\repos\IPC2PROYECTO1\IPC2PROYECTO1\obj\Debug\net10.0\refint
 C:\Users\dxssm\source\repos\IPC2PROYECTO1\IPC2PROYECTO1\obj\Debug\net10.0\IPC2PROYECTO1.pdb
 C:\Users\dxssm\source\repos\IPC2PROYECTO1\IPC2PROYECTO1\obj\Debug\net10.0\IPC2PROYECTO1.genruntimeconfig.cache
 C:\Users\dxssm\source\repos\IPC2PROYECTO1\IPC2PROYECTO1\obj\Debug\net10.0\ref\IPC2PROYECTO1.dll
+C:\Users\dxssm\source\repos\IPC2PROYECTO1\IPC2PROYECTO1\obj\Debug\net10.0\IPC2PROYECTO1.sourcelink.json

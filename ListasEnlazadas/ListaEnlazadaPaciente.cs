@@ -80,6 +80,11 @@ namespace IPC2PROYECTO1
             count--;
             return true;
         }
+        public void Limpiar()
+        {
+            inicio = null;
+            count = 0;
+        }
 
         public void Imprimir()
         {
