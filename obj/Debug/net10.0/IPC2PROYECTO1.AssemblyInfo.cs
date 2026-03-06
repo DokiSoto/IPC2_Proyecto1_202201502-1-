@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("IPC2PROYECTO1")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bd23c6252bd299063075f22a221debc38f9bb25b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1be3924fa812d249acbf91b44034ffa60db2c60f")]
 [assembly: System.Reflection.AssemblyProductAttribute("IPC2PROYECTO1")]
 [assembly: System.Reflection.AssemblyTitleAttribute("IPC2PROYECTO1")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
