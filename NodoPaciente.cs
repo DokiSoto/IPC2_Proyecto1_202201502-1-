@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+
 using IPC2PROYECTO1.Clases;
 
 namespace IPC2PROYECTO1
 {
-    public class NodoPaciente
+    public class NodoPaciente : Nodo 
     {
         public Paciente Dato;
         public NodoPaciente Siguiente;

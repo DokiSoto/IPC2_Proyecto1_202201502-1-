@@ -1,7 +1,5 @@
 ﻿using IPC2PROYECTO1.Clases;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace IPC2PROYECTO1.ListasEnlazadas
 {
@@ -27,29 +25,62 @@ namespace IPC2PROYECTO1.ListasEnlazadas
             else
             {
                 NodoEstado actual = inicio;
+
                 while (actual.Siguiente != null)
                 {
                     actual = actual.Siguiente;
                 }
+
                 actual.Siguiente = nuevo;
             }
 
             count++;
         }
 
-        public Estado BuscarPorPatron(string patron)
+        public Estado BuscarEstado(ListaEnlazadaCelda celdas)
         {
             NodoEstado actual = inicio;
 
             while (actual != null)
             {
-                if (actual.Dato.Patron == patron)
+                if (CompararListas(actual.Dato.Celdas, celdas))
+                {
                     return actual.Dato;
+                }
 
                 actual = actual.Siguiente;
             }
 
             return null;
+        }
+
+        private bool CompararListas(ListaEnlazadaCelda a, ListaEnlazadaCelda b)
+        {
+            NodoCelda actual = a.ObtenerInicio();
+
+            while (actual != null)
+            {
+                if (!b.Existe(actual.Dato.Fila, actual.Dato.Columna))
+                {
+                    return false;
+                }
+
+                actual = actual.Siguiente;
+            }
+
+            actual = b.ObtenerInicio();
+
+            while (actual != null)
+            {
+                if (!a.Existe(actual.Dato.Fila, actual.Dato.Columna))
+                {
+                    return false;
+                }
+
+                actual = actual.Siguiente;
+            }
+
+            return true;
         }
     }
 }

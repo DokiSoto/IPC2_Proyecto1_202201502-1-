@@ -1,7 +1,6 @@
 ﻿using IPC2PROYECTO1.Clases;
 using System;
-using System.Collections.Generic;
-using System.Text;
+
 
 namespace IPC2PROYECTO1.ListasEnlazadas
 {
@@ -54,6 +53,20 @@ namespace IPC2PROYECTO1.ListasEnlazadas
         public NodoCelda ObtenerInicio()
         {
             return inicio;
+        }
+        public ListaEnlazadaCelda Clonar()
+        {
+            ListaEnlazadaCelda nueva = new ListaEnlazadaCelda();
+
+            NodoCelda actual = inicio;
+
+            while (actual != null)
+            {
+                nueva.Insertar(new Celda(actual.Dato.Fila, actual.Dato.Columna));
+                actual = actual.Siguiente;
+            }
+
+            return nueva;
         }
 
         public int GetTam()

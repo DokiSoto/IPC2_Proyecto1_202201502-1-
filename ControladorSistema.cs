@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using IPC2PROYECTO1.Clases;
 using IPC2PROYECTO1.ListasEnlazadas;
+using System.Xml.Linq;
+using System.IO;
 
 namespace IPC2PROYECTO1
 {
@@ -10,11 +12,15 @@ namespace IPC2PROYECTO1
     {
         private ListaEnlazadaPaciente pacientes;
         private Paciente pacienteActual;
+        ListaEnlazadaEstado estados = new ListaEnlazadaEstado();
+        int periodoActual = 0;
 
         public ControladorSistema()
         {
             pacientes = new ListaEnlazadaPaciente();
             pacienteActual = null;
+
+
         }
 
         public void CargarXML()
@@ -48,14 +54,15 @@ namespace IPC2PROYECTO1
             else
                 Console.WriteLine("ESE PACIENTE NO EXISTE VOS");
 
-            
+
         }
 
         public void EjecutarUnPeriodo()
         {
-            if(pacienteActual == null)
+            if (pacienteActual == null)
             {
-                Console.WriteLine("Selecciona un paciente primero");
+                Console.WriteLine("Debe seleccionar un paciente primero.");
+                Console.ReadKey();
                 return;
             }
 
@@ -63,29 +70,77 @@ namespace IPC2PROYECTO1
             Visualizador vis = new Visualizador();
 
             sim.EjecutarUnPeriodo(pacienteActual);
-            vis.ImprimirRejilla(pacienteActual);
 
-            Console.ReadKey(); ;
+            periodoActual++;
 
-            Console.WriteLine("PErdiodo ejecutado)");
+            Estado encontrado = estados.BuscarEstado(pacienteActual.CeldasVivas);
 
-        }
-
-        public void EjecutarAuto()
-        {
-            if(pacienteActual == null)
+            if (encontrado != null)
             {
-                Console.WriteLine("Debe seleccionar un paciente primero.");
-                return;
-
+                Console.WriteLine("Patron repetido detectado.");
+                Console.WriteLine("Periodo actual: " + periodoActual);
+                Console.WriteLine("El patron aparecio antes en el periodo: " + encontrado.Periodo);
+            }
+            else
+            {
+                estados.Insertar(new Estado(pacienteActual.CeldasVivas, periodoActual));
             }
 
-            Console.WriteLine("EJECUTANDO AUTOMATICO");
+            vis.ImprimirRejilla(pacienteActual);
+
+            Console.ReadKey();
         }
+
+    
+
+
+public void EjecutarAuto()
+        {
+            if (pacienteActual == null)
+            {
+                Console.WriteLine("Debe seleccionar un paciente primero.");
+                Console.ReadKey();
+                return;
+            }
+
+            int periodo = 0;
+
+            while (periodo < pacienteActual.PeriodosMaximos)
+            {
+                Estado repetido = pacienteActual.Estados.BuscarEstado(pacienteActual.CeldasVivas);
+
+                if (repetido != null)
+                {
+                    if (repetido.Periodo == 0)
+                        pacienteActual.Resusltado = "mortal";
+                    else
+                        pacienteActual.Resusltado = "grave";
+
+                    Console.WriteLine("Se detecto repeticion de patron en el periodo: " + periodo);
+                    Console.WriteLine("Resultado: " + pacienteActual.Resusltado);
+                    return;
+                }
+
+                Estado nuevo = new Estado(pacienteActual.CeldasVivas.Clonar(), periodo);
+                pacienteActual.Estados.Insertar(nuevo);
+
+                EjecutarUnPeriodo();
+
+                periodo++;
+            }
+
+            pacienteActual.Resusltado = "leve";
+            Console.WriteLine("No se detectaron repeticiones.");
+            Console.WriteLine("Resultado: leve");
+        }
+
 
         public void GenerarXML()
         {
-            Console.WriteLine("Generando XML de salida...");
+            XMLsalida generador = new XMLsalida();
+            generador.Generar(pacientes);
+
+            Console.ReadKey();
 
         }
 
@@ -96,6 +151,49 @@ namespace IPC2PROYECTO1
             Console.WriteLine("Memoria limpiada.");
         }
 
+        public string GenerarPatron(ListaEnlazadaCelda celdas)
+        {
+            string patron = "";
 
+            NodoCelda actual = celdas.ObtenerInicio();
+
+            while (actual != null)
+            {
+                patron += actual.Dato.Fila + "," + actual.Dato.Columna + ";";
+                actual = actual.Siguiente;
+            }
+
+            return patron;
+        }
+
+        
+
+public void GenerarSalidaXML()
+    {
+        if (pacienteActual == null)
+        {
+            Console.WriteLine("No hay paciente seleccionado.");
+            Console.ReadKey();
+            return;
+        }
+
+        string ruta = "salida_simulacion.xml";
+
+        XElement pacienteXML = new XElement("paciente",
+            new XElement("nombre", pacienteActual.Nombre),
+            new XElement("periodo_actual", periodoActual)
+        );
+
+        XElement raiz = new XElement("resultados", pacienteXML);
+
+        XDocument doc = new XDocument(raiz);
+
+        doc.Save(ruta);
+
+        Console.WriteLine("Archivo XML generado en: " + Path.GetFullPath(ruta));
+        Console.ReadKey();
     }
+
+
+}
 }

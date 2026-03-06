@@ -5,7 +5,7 @@ using IPC2PROYECTO1.Clases;
 
 namespace IPC2PROYECTO1
 {
-    public class NodoCelda
+    public class NodoCelda : Nodo
     {
         public Celda Dato;
         public NodoCelda Siguiente;

@@ -1,7 +1,5 @@
 ﻿using IPC2PROYECTO1.Clases;
-using System;
-using System.Collections.Generic;
-using System.Text;
+
 
 namespace IPC2PROYECTO1
 {
@@ -9,54 +7,34 @@ namespace IPC2PROYECTO1
     {
         public void ImprimirRejilla(Paciente paciente)
         {
-            int maxFila = ObtenerMaxFila(paciente);
-            int maxColumna = ObtenerMaxColumna(paciente);
+            int minFila = int.MaxValue;
+            int maxFila = int.MinValue;
+            int minCol = int.MaxValue;
+            int maxCol = int.MinValue;
 
-            for (int i = 0; i <= maxFila; i++)
+            NodoCelda actual = paciente.CeldasVivas.ObtenerInicio();
+
+            while (actual != null)
             {
-                for (int j = 0; j <= maxColumna; j++)
+                if (actual.Dato.Fila < minFila) minFila = actual.Dato.Fila;
+                if (actual.Dato.Fila > maxFila) maxFila = actual.Dato.Fila;
+                if (actual.Dato.Columna < minCol) minCol = actual.Dato.Columna;
+                if (actual.Dato.Columna > maxCol) maxCol = actual.Dato.Columna;
+
+                actual = actual.Siguiente;
+            }
+
+            for (int i = minFila; i <= maxFila; i++)
+            {
+                for (int j = minCol; j <= maxCol; j++)
                 {
                     if (paciente.CeldasVivas.Existe(i, j))
-                        Console.WriteLine("X ");
+                        Console.Write("X ");
                     else
-                        Console.WriteLine(". ");
-
-
-
+                        Console.Write(". ");
                 }
                 Console.WriteLine();
-
             }
-        }
-        private int ObtenerMaxFila(Paciente paciente)
-        {
-            int max = 0;
-            NodoCelda actual = paciente.CeldasVivas.ObtenerInicio();
-
-            while (actual != null)
-            {
-                if (actual.Dato.Fila > max)
-                    max = actual.Dato.Fila;
-
-                actual = actual.Siguiente;
-            }
-            return max + 1;
-        }
-
-
-        private int ObtenerMaxColumna(Paciente paciente)
-        {
-            int max = 0;
-            NodoCelda actual = paciente.CeldasVivas.ObtenerInicio();
-
-            while (actual != null)
-            {
-                if (actual.Dato.Columna > max)
-                    max = actual.Dato.Columna;
-
-                actual = actual.Siguiente;
-            }
-            return max + 1;
         }
     }
 }

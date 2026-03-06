@@ -36,7 +36,7 @@ namespace IPC2PROYECTO1
                         break;
 
                     case 3:
-                        sistema.EjecutarUnPeriodo();
+                        sistema.EjecutarUnPeriodo( );
                         break;
 
                     case 4:

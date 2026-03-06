@@ -5,7 +5,7 @@ using System.Text;
 
 namespace IPC2PROYECTO1
 {
-    public class NodoEstado
+    public class NodoEstado : Nodo
     {
         public Estado Dato;
         public NodoEstado Siguiente;

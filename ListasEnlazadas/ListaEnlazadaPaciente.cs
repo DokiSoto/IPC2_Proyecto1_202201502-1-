@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
 using IPC2PROYECTO1.Clases;
 using IPC2PROYECTO1.ListasEnlazadas;
@@ -95,6 +94,10 @@ namespace IPC2PROYECTO1
                 Console.WriteLine(actual.Dato.Nombre);
                 actual = actual.Siguiente;
             }
+        }
+        public NodoPaciente ObtenerInicio()
+        {
+            return inicio;
         }
 
     }
